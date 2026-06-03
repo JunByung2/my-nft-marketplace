@@ -14,19 +14,19 @@ export function Header() {
     functionName: "balanceOf",
     args: address ? [address as `0x${string}`] : undefined,
     query: { enabled: !!address },
-  });
+  }) as { data: bigint | undefined };
 
   const { data: decimals } = useReadContract({
     address: tokenAddress,
     abi: tokenABI,
     functionName: "decimals",
-  });
+  }) as { data: number | undefined };
 
   const { data: symbol } = useReadContract({
     address: tokenAddress,
     abi: tokenABI,
     functionName: "symbol",
-  });
+  }) as { data: string | undefined };
 
   return (
     <header className="border-b border-zinc-200 bg-white/80 backdrop-blur dark:border-zinc-800 dark:bg-zinc-950/80">
